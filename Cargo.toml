@@ -6,4 +6,5 @@ edition = "2024"
 [dependencies]
 chrono = "0.4.45"
 iced = "0.14.0"
+iced_layershell = "0.19.1"
 niri-ipc = "26.4.0"
