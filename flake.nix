@@ -46,6 +46,7 @@
           pkgs.zenity
         ];
         nativeBuildInputs = [ pkgs.pkg-config ];
+        buildInputs = runTimeDeps;
         env.RUSTFLAGS = "-C link-arg=-Wl,-rpath,${nixpkgs.lib.makeLibraryPath runTimeDeps}";
       };
       formatter = pkgs.rustfmt;
