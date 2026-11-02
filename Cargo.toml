@@ -4,7 +4,15 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-chrono = "0.4.45"
-iced = "0.14.0"
+iced = { version = "0.14", features = ["tokio"] }
 iced_layershell = "0.19.1"
-niri-ipc = "26.4.0"
+# Pinned: `iced_exdevtools 0.19.1` matches exhaustively on
+# `winit_core::keyboard::NativeKeyCode`, which became `#[non_exhaustive]` in
+# `winit-core 0.31.0-beta.3`, breaking the build.
+winit-core = "=0.31.0-beta.2"
+niri-ipc = "=26.4.0"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
+[profile.release]
+opt-level = 2
+lto = "thin"
